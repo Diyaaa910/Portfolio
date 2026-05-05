@@ -16,6 +16,8 @@ body {
   color: white;
   overflow-x: hidden;
 }
+
+/* DARK OVERLAY (reduced for visibility) */
 body::before {
   content: "";
   position: fixed;
@@ -24,9 +26,10 @@ body::before {
   width: 100%;
   height: 100%;
 
-  background: rgba(0, 0, 0, 0.5); /* adjust darkness */
+  background: rgba(0, 0, 0, 0.25); /* reduced darkness */
   z-index: -1;
 }
+
 /* HEADER */
 header {
   text-align: center;
@@ -35,6 +38,7 @@ header {
 
 header h1 {
   font-size: 3rem;
+  text-shadow: 0 0 10px #6cf;
 }
 
 header p {
@@ -91,24 +95,30 @@ h2 {
   border-left: 4px solid #6cf;
   padding-left: 10px;
   font-family: cursive;
-  
+  text-shadow: 0 0 8px #6cf;
 }
 
 /* CARDS */
 .card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 15px;
   padding: 20px;
   margin: 15px 0;
-  color:rgb(189, 178, 27);
+  color: #e6f7ff; /* improved readability */
 
-  backdrop-filter: blur(80px);
+  backdrop-filter: blur(25px);
   transition: 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(108, 204, 255, 0.5);
+}
+
+/* ENSURE CONTENT ABOVE STARS */
+header, nav, section, footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* FOOTER */
@@ -123,7 +133,7 @@ footer {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: transparent;
+  z-index: 0;
 
   box-shadow:
     50px 100px white,
@@ -135,7 +145,6 @@ footer {
 
   animation: twinkle 5s infinite alternate;
 
-  /* VERY IMPORTANT FIX */
   pointer-events: none;
 }
 
@@ -143,6 +152,7 @@ footer {
   from { opacity: 0.5; }
   to { opacity: 1; }
 }
+
 /* GALLERY */
 .gallery {
   display: flex;
